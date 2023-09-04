@@ -1,4 +1,6 @@
 import { useState } from 'react';
+// import logo from './floz.png';
+const logoUrl = "https://i0.wp.com/flozdesign.com/wp-content/uploads/2023/03/cropped-flozlogo2white-03.png?fit=656%2C294&ssl=1";
 
 function Home() {
   const [inputValue, setInputValue] = useState('');
@@ -28,7 +30,7 @@ function Home() {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ value: "residential architecture, high res, photo realistic render, "+ imagePrompt }),
+      body: JSON.stringify({ value: "residential architecture, high res, ultra detailed, photorealistic, octane render"+ imagePrompt }),
     });
 
     if (img_response.ok) {
@@ -92,11 +94,17 @@ function Home() {
         <><div className="mt-12 flex justify-center">
           <img src={imageUrl} alt="Generated image" className="rounded-xl shadow-lg" />
         </div><div className="mt-12 flex justify-center">
-            <a href={`https://twitter.com/intent/tweet?url=${imageUrl}&text=${imagePrompt}`} target="_blank" rel="noopener noreferrer">
+            <a href={`https://twitter.com/intent/tweet?url=${imageUrl}&text=Check out my dream house! Get yours here: https://www.instagram.com/flozdesign_ig/`} target="_blank" rel="noopener noreferrer">
               Share on Twitter
             </a>
           </div></>
       )}
+      <div className="mt-12 flex justify-center">
+        <a href="https://flodesigners.com/" target="_blank" rel="noopener noreferrer">
+          <img src={logoUrl} alt="Logo" />
+        </a>
+      </div>
+      
       <style jsx>{`
         .loader {
           animation: spin 1s linear infinite;
