@@ -94,7 +94,7 @@ function Home() {
         <><div className="mt-12 flex justify-center">
           <img src={imageUrl} alt="Generated image" className="rounded-xl shadow-lg" />
         </div><div className="mt-12 flex justify-center">
-            <a href={`https://twitter.com/intent/tweet?url=${imageUrl}&text=Check out my dream house! Get yours here: https://www.instagram.com/flozdesign_ig/`} target="_blank" rel="noopener noreferrer">
+            <a href={`https://twitter.com/intent/tweet?url=${imageUrl}&text=Check out my dream house 😍 Get yours here:https://flodesigners.com/`} target="_blank" rel="noopener noreferrer">
               Share on Twitter
             </a>
           </div></>

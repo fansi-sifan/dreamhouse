@@ -1,4 +1,4 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
+// Replicate API references: https://sdxl.replicate.dev/
 
 import Replicate from 'replicate';
 
@@ -22,9 +22,10 @@ const handler = async (req, res) => {
         input: {
           prompt: value,
           image_dimensions: "1024x1024",
-          num_inference_steps: 12,
+          num_inference_steps: 50,
           num_outputs: 1,
-          guideance_scale: 3.5,
+          guideance_scale: 20,
+          refine: "expert_ensemble_refiner",
           scheduler: "K_EULER" ,
         },
       },
