@@ -49,6 +49,7 @@ function Home() {
         <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 via-green-500 to-cyan-400 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl"></div>
         <div className="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20">
           <form onSubmit={handleSubmit} className="max-w-md mx-auto space-y-4">
+            <h1 className="text-2xl font-bold text-center mb-4">Find your dream house</h1>
             {/* <input
               type="text"
               value={inputValue}
