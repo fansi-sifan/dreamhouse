@@ -10,7 +10,8 @@ const handler = async (req, res) => {
       const completion = await openai.completions.create({
         model: "text-davinci-003",  
         prompt: `You are a architect designer. Your client MBTI is: ${value}
-        Generate keywords for their dream house, including details on the housing size, architectural style, materials, color, lighting, design inspirations,etc.`,
+        Generate keywords for their dream house, including details on the housing size, architectural style, materials, color, lighting, design inspirations,etc.
+        Display these in bullet points in markdown format.`,
         max_tokens: 100,
         temperature: 0.9,
     });
