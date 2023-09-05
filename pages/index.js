@@ -7,6 +7,7 @@ const logoUrl = "https://i0.wp.com/flozdesign.com/wp-content/uploads/2023/03/cro
 function Home() {
   const [inputValue, setInputValue] = useState('');
   const [imagePrompt, setImagePrompt] = useState('');
+  const [textOutput, setTextOutput] = useState('');
   const [imageUrl, setImageUrl] = useState('');
   const [loading, setLoading] = useState(false);
 
@@ -14,17 +15,32 @@ function Home() {
     event.preventDefault();
     setLoading(true);
 
-    const response = await fetch('/api/openai', {
+    const mbti_response = await fetch('/api/openai', {
       method: 'POST',
-      body: JSON.stringify({ value: inputValue }),
+      body: JSON.stringify({ prompt: `Your client MBTI is: ${inputValue}
+      Generate keywords for their dream house, including details on the housing size, architectural style, materials, color, lighting, design inspirations,etc.` }),
     });
 
-    if (response.ok) {
-      const chat = await response.json();
-      setImagePrompt(chat.choices[0].text);
-      console.log(chat.choices[0].text);
+    if (mbti_response.ok) {
+      const chat = await mbti_response.json();
+      setImagePrompt(chat.choices[0].message.content);
+      console.log(chat.choices[0].message.content);
     } else {
-      console.error('Error:', response.statusText);
+      console.error('Error:', mbti_response.statusText);
+    }
+
+    const text_response = await fetch('/api/openai', {
+      method: 'POST',
+      body: JSON.stringify({ prompt: `Your client's preferences are ${imagePrompt}
+      Describe their dreamhouse using these keywords. Be creative, fewer than 200 characters.` }),
+    });
+
+    if (text_response.ok) {
+      const output = await text_response.json();
+      setTextOutput(output.choices[0].message.content);
+      console.log(output.choices[0].message.content);
+    } else {
+      console.error('Error:', text_response.statusText);
     }
 
     const img_response = await fetch('/api/stablediffusion', {
@@ -59,9 +75,9 @@ function Home() {
         </div>
       )}
       <div className="mt-12 flex justify-center">
-        {imagePrompt && (
+        {!loading && imagePrompt && (
           <div className="max-w-md mx-auto">
-            <p dangerouslySetInnerHTML={{ __html: `<strong>This is the characteristics of your dream house!</strong> <br /> ${imagePrompt}` }}></p>
+          <p><strong>This is the characteristics of your dream house!</strong> <br /> {textOutput}</p>
           </div>
         )}
       </div>
