@@ -4,17 +4,17 @@ const openai = new OpenAI();
 
 const handler = async (req, res) => {
     
-    const { value } = req.body;
+    const body = JSON.parse(req.body);
+    const prompt = body.prompt;
+    console.log(prompt)
   
     try {
-      const completion = await openai.completions.create({
-        model: "text-davinci-003",  
-        prompt: `You are a architect designer. Your client MBTI is: ${value}
-        Generate keywords for their dream house, including details on the housing size, architectural style, materials, color, lighting, design inspirations,etc.
-        Display these in bullet points in markdown format.`,
-        max_tokens: 100,
-        temperature: 0.9,
-    });
+      const completion = await openai.chat.completions.create({
+        model: "gpt-3.5-turbo",
+        messages: [
+          { role: "system", content: "You are a architect designer."},
+          { role: "user", content: `${prompt}` }],
+      });
   
       console.log(completion)
       res.status(200).json(completion)
