@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import MBTIForm from './MBTIForm';
 import ImageDisplay from './ImageDisplay';
+import { Analytics } from '@vercel/analytics/react';
 // import logo from './floz.png';
 const logoUrl = "https://i0.wp.com/flozdesign.com/wp-content/uploads/2023/03/cropped-flozlogo2white-03.png?fit=656%2C294&ssl=1";
 
@@ -87,7 +88,7 @@ function Home() {
           <img src={logoUrl} alt="Logo" />
         </a>
       </div>
-      
+      <Analytics />
       <style jsx>{`
         .loader {
           animation: spin 1s linear infinite;
