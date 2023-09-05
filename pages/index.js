@@ -30,7 +30,7 @@ function Home() {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ value: "residential architecture, high res, ultra detailed, photorealistic, octane render"+ imagePrompt }),
+      body: JSON.stringify({ value: "residential architecture, exterior design, high res, ultra detailed, photorealistic, octane render"+ imagePrompt }),
     });
 
     if (img_response.ok) {

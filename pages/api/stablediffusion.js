@@ -22,7 +22,7 @@ const handler = async (req, res) => {
         input: {
           prompt: value,
           image_dimensions: "1024x1024",
-          num_inference_steps: 50,
+          num_inference_steps: 40,
           num_outputs: 1,
           guideance_scale: 20,
           refine: "expert_ensemble_refiner",
