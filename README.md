@@ -4,4 +4,4 @@ Find your dream house based on your personality type.
 - Generate high-res rending of residential houses using Stable Diffusion XL
 
 
-I don't know next.js (yet) so this app was 99% written by [curso.so](curso.so) and GPT-4.
+I don't know next.js (yet) so this app was 99% written by [curso.so](www.curso.so) and GPT-4.
